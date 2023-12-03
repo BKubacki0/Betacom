@@ -1,0 +1,341 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetKRSData" this:GetKRSData.KRS_Number="0000142065" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="KRS_Number" Type="InArgument(x:String)" />
+    <x:Property Name="KRS_Nazwa" Type="OutArgument(x:String)" />
+    <x:Property Name="KRS_NIP" Type="OutArgument(x:String)" />
+    <x:Property Name="KRS_REGON" Type="OutArgument(x:String)" />
+    <x:Property Name="KRS_Forma" Type="OutArgument(x:String)" />
+    <x:Property Name="KRS_Data" Type="OutArgument(x:String)" />
+    <x:Property Name="ChromeBrowser" Type="InArgument(ui:UiElement)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1244,3605</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GetKRSData_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>UiPath.UIAutomationNext.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Triggers</x:String>
+      <x:String>UiPath.Platform.Triggers.Scope</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetKRSData" sap:VirtualizedContainerService.HintSize="1150,3540" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1088,3429" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <TryCatch.Try>
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Portal Rejestrów Sądowych" sap:VirtualizedContainerService.HintSize="1050,3201" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InUiElement="[ChromeBrowser]" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,3064" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Krajowy Rejestr Sądowy'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://prs.ms.gov.pl/" DesignTimeRectangle="128, 576, 538, 325" DesignTimeScaleFactor="1" FriendlyName="'Krajowy Rejestr'" FullSelectorArgument="&lt;webctrl tabindex='0' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tabindex='0' tag='DIV' type='' class='service-container p-p-4' aaname='' check:innerText='Krajowy Rejestr Sądowy&amp;#xD;&amp;#xA;Możliwość realizacji spraw z zakresu Krajowego Rejestru Sądowego, m.in.' /&gt;" Guid="1f1d373b-4e53-45d6-8996-01aa1ab96cf9" InformativeScreenshot="be2231445f6384775964f5e60f3213a9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal Rejestrów Sądowych' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Visible" WaitForReadyArgument="Complete">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="151, 618, 212, 21" CvTextArgument="Krajowy Rejestr Sadowy" CvType="Text" DesignTimeRectangle="152, 615, 426, 24" ElementType="Text" FriendlyName="'Krajowy Rejestr Sądowy'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;prs-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;prs-ekrs-page&amp;gt;prs-services-grid&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;prs-service-tile&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;h2' tag='H2' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='H2' class='' aaname='Krajowy Rejestr Sądowy' check:innerText='Krajowy Rejestr Sądowy' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Wyszukiwarka KRS'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://prs.ms.gov.pl/krs" DesignTimeRectangle="1247, 764, 544, 360" DesignTimeScaleFactor="1" FriendlyName="'nie wymaga'" FullSelectorArgument="&lt;webctrl idx='6' tabindex='0' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tabindex='0' tag='DIV' class='service-container p-p-4' aaname='' check:innerText='NIE WYMAGA ZALOGOWANIA&amp;#xD;&amp;#xA;Wyszukiwarka KRS&amp;#xD;&amp;#xA;Każdy może wyszukać podmiot w KRS i uzyskać informację' /&gt;" Guid="2bc8ab9c-88e6-4fe0-8d42-bc49212f002e" InformativeScreenshot="c40d88992ac55007c40b4ebc7159fea9.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal Rejestrów Sądowych' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="1269, 822, 167, 21" CvTextArgument="Wyszukiwarka KRS" CvType="Text" DesignTimeRectangle="1271, 819, 432, 24" ElementType="Text" FriendlyName="'Wyszukiwarka KRS'" FullSelectorArgument="&lt;webctrl idx='6' tag='H2' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='H2' class='' aaname='Wyszukiwarka KRS' check:innerText='Wyszukiwarka KRS' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Wyczyść'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/" CvElementArea="1361, 406, 341, 32" CvTextArea="1508, 416, 48, 15" CvTextArgument="Wyczysc" CvType="Button" DesignTimeRectangle="1364, 407, 336, 29" DesignTimeScaleFactor="0.8999999761581421" ElementType="Button" FriendlyName="'Wyczyść'" FullSelectorArgument="&lt;webctrl aaname='Wyczyść' css-selector='body&amp;gt;app-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;app-wyszukiwarka-krs&amp;gt;div&amp;gt;div&amp;gt;ds-tab-view&amp;gt;div&amp;gt;div&amp;gt;app-wyszukaj-podmiot&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ds-button&amp;gt;p-button&amp;gt;button' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Wyczyść' type='button' tag='BUTTON' class='p-button-outlined w-100 p-button p-component p-ripple' check:innerText='Wyczyść' /&gt;" Guid="732171ef-cda0-4816-9bf8-61ddb8f54228" InformativeScreenshot="9092bf552a4da01b488c67dc60b16391.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvElementArea="1361, 406, 341, 32" CvTextArea="1508, 416, 48, 15" CvTextArgument="Wyczysc" CvType="Button" DesignTimeRectangle="1378, 415, 307, 14" ElementType="Text" FriendlyName="'Wyczyść'" FullSelectorArgument="&lt;webctrl aaname='Wyczyść' css-selector='body&amp;gt;app-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;app-wyszukiwarka-krs&amp;gt;div&amp;gt;div&amp;gt;ds-tab-view&amp;gt;div&amp;gt;div&amp;gt;app-wyszukaj-podmiot&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ds-button&amp;gt;p-button&amp;gt;button&amp;gt;span' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Wyczyść' type='' tag='SPAN' class='p-button-label ng-star-inserted' check:innerText='Wyczyść' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAATcAAAASCAYAAAA+NJkDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHASURBVHhe7dpLboMwFIXhrJHVZAHZRBbAMEMGWUAYp1L2kGQVri9+cG0uoRK0qtD/SajYoSajo2PIwQHADhFuAHaJcAOwS4QbgF0i3ADsEuGGqfvVHc6POBAv1x5b13SvOBYyd3HtOw5/WX9uq+8UyXc93twzDoGEcMPU++YaHRgybny41HN/FSqTsI2G73V1fRwCGuEGQ9XKfLg03WMyZwYO8E8QbjDJNvB0L8+f3aWaC9vVNDfQjS41vnikNdJ4OPy1XzI32QaHIK2vz/cy1gY0wg223Mwe7pS2fnlONbuqwUkYhWdz8n+fn8k9u2v8XN1D5ID08+bWd3ltgHCDLQWM/M3hFUMoh4+aq8+Xtq3+c/2CwmqK6XzSzJbWBjzCDTNCOzudUxMLej9ufeMy25oOnU8BVARmpNuabnFREXKEG36AcMOsECjl9i89AyufcflA8sHUqsY1v3UM11pvWa3gLOS2N7c2MCLcME8aUh1E0rCMYBmC0Lw2NK4UiKmBjYdqaXK/Ym0JsZlrjbUBjXDDJsYXCSvkrSmwHuGGDWyzTZRWtzoggYhwwwrhd25rt4X5t2y8JMCGCDcAO+TcN3AcSjg5TMmdAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NCheck Action="Check" DisplayName="Check/Uncheck 'unchecked'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NCheck_1" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V3">
+                  <uix:NCheck.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/" DesignTimeRectangle="259, 474, 87, 13" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'unchecked'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='ng-star-inserted p-checkbox-label' aaname='Przedsiębiorcy' check:innerText='Przedsiębiorcy' /&gt;" Guid="4cbfff52-053f-452a-9efc-8c99d099548d" InformativeScreenshot="734b2180bf01f95717c15e90c081e105.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="233, 438, 169, 20" CvTextArgument="Okresl rodzaj rejestru" CvType="Text" DesignTimeRectangle="234, 436, 167, 22" FriendlyName="'Określ rodzaj rejestru'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;app-wyszukiwarka-krs&amp;gt;div&amp;gt;div&amp;gt;ds-tab-view&amp;gt;div&amp;gt;div&amp;gt;app-wyszukaj-podmiot&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;p-header&amp;gt;ds-panel-header' tag='DS-PANEL-HEADER' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='DS-PANEL-HEADER' class='ds-panel-header' aaname='Określ rodzaj rejestru' check:innerText='Określ rodzaj rejestru' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NCheck.Target>
+                </uix:NCheck>
+                <uix:NSetText DisplayName="Set Text 'Numer KRS'" sap:VirtualizedContainerService.HintSize="954,162" sap2010:WorkflowViewState.IdRef="NSetText_1" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Text="[KRS_Number]" Version="V3">
+                  <uix:NSetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/" CvElementArea="233, 510, 502, 33" CvType="InputBox" DesignTimeRectangle="234, 512, 500, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="InputBox" FriendlyName="'INPUT 40424136'" FullSelectorArgument="&lt;webctrl id='40424136' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='40424136' tag='INPUT' type='text' class='w-100 p-inputtext p-component ng-untouched ng-pristine ng-valid' aaname='Numer KRS' /&gt;" Guid="bd7ac89e-fd8a-423e-bf77-99b16271e873" InformativeScreenshot="16e7d7d7b7a1183567a12a050ad897b2.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="233, 495, 60, 11" CvTextArgument="Numer KRS" CvType="Text" DesignTimeRectangle="234, 494, 500, 14" ElementType="Text" FriendlyName="'Numer KRS'" FullSelectorArgument="&lt;webctrl class='ds-input-label' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl class='ds-input-label' tag='LABEL' type='' aaname='Numer KRS' check:innerText='Numer KRS' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAfgAAAASCAYAAAC3gMwvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHUSURBVHhe7dpRjoIwEIDhvSC3kauY3kPuQbgFnmJ2prU4bcHFF7Op/5e4EcTat5+W/REAANAdAg8AQIcIPAAAHSLwAAB0iMADANChIvDLdZDhMsn6OI7mIOOtOPN590nGYl6LhGGQMIust1EGfb+9/HU69+Kz6/L4AACAvlWBHzWkKZybfxd4i/so0z0exMD7+dlNSjq264L+BQDg+zSBn+5VGF3gLZ4+/hbXfLxcg0xuNR3mVSa9WUjHzyCn8Lbn15t+f9aQ2/l6F2ELvI3px2oD/5wvgQcAfK9miz4G27a283b26cDnlbOyIMfIp8PneFWg3co8brXXYc/idUFCvbug9lbwxe/qPIobAAAAvsB+4P3704GvV+lu9WyBjoH3q/f8Stf5sRrxhsHGb1fl8cbAjbc3Rr7mcHwAADpzGPgUVY3pi8CXNwRnA18GOvsz8Hl1b6tyt9K37+X5+fcNPwYAAJ07DryKK9+Lhnc3oGk1/l7g03P5vQifDryyee5HvX1Gv6luDAAA6NnLwLdBTlHPW+v2T3XvBd74MfT1OP9O4P28ysCr+Nxdf9u+43/nYOcAAIAeFYEHAAB9IPAAAHSIwAMA0CECDwBAhwg8AADdEfkFkQ4658D8MecAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSetText.Target>
+                </uix:NSetText>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Wyszukaj'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/" CvElementArea="1360, 342, 341, 32" CvTextArea="1503, 351, 56, 16" CvTextArgument="Wyszukaj" CvType="Button" DesignTimeRectangle="1364, 343, 336, 29" DesignTimeScaleFactor="0.8999999761581421" ElementType="Button" FriendlyName="'Wyszukaj'" FullSelectorArgument="&lt;webctrl aaname='Wyszukaj' css-selector='body&amp;gt;app-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;app-wyszukiwarka-krs&amp;gt;div&amp;gt;div&amp;gt;ds-tab-view&amp;gt;div&amp;gt;div&amp;gt;app-wyszukaj-podmiot&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ds-button&amp;gt;p-button&amp;gt;button' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Wyszukaj' type='button' tag='BUTTON' class='w-100 p-button p-component p-ripple' check:innerText='Wyszukaj' /&gt;" Guid="d3089644-4946-41d1-920b-3c06ce616936" InformativeScreenshot="513081b420b9c178f2a8cf04b6371b7d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvElementArea="1360, 342, 341, 32" CvTextArea="1503, 351, 56, 16" CvTextArgument="Wyszukaj" CvType="Button" DesignTimeRectangle="1378, 351, 307, 14" ElementType="Text" FriendlyName="'Wyszukaj'" FullSelectorArgument="&lt;webctrl aaname='Wyszukaj' css-selector='body&amp;gt;app-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;app-wyszukiwarka-krs&amp;gt;div&amp;gt;div&amp;gt;ds-tab-view&amp;gt;div&amp;gt;div&amp;gt;app-wyszukaj-podmiot&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ds-button&amp;gt;p-button&amp;gt;button&amp;gt;span' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Wyszukaj' type='' tag='SPAN' class='p-button-label ng-star-inserted' check:innerText='Wyszukaj' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAATcAAAASCAYAAAA+NJkDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOPSURBVHhe7ZpBSxtBGIbzU/IP/Ak55u4hV4/ixZOngsSDeCoGpHgQJKcYKKjYQwSxpgQSUlKilKyYEDUoETHZSBKWxRB4+83szCbasZUW26b7HR52592Z2T29vN83GwpNp8AwDPPfYRQZhmEmHaPIMAwz6RhFhmGYSccoMgzDTDpGkQkUsaILx+1gxdfKyNwDzv0t5n2tgqMecHNcVuNXZvMWN4MHZDYNz37AytkQzvUlIoZnTMAwikywSLdgCyNJqnGiiYsBmdvAxU5CaRvCbIDCrhq/NmxuzO9iFJmAcYqCC1wU83IcyfUptfVhUXqzcocjbdDF+pxp/Svwi+bGMD5GkQkYh9hqUlJr1BGm8UqN7s/r3nVcu2vi3WcqYQd9JJf0Wq9ctb+eILRWR7ktEp+HfddC/I0qcZUmoT1D0zSX7ssHeh81Tz6j8SNzy2K19gDHIXNdpnGijkKbEpraz253sCp0WrfeGNuDCTZGkQkcsu/WIzNSZiUSW/igq3pxnvHIftvSJSwyFJ3ywh86ZDBDHKVUSSj2WEhharmEeLokjVG/I5wUhjUkQ8vS+KXmlsX6Oe2rjU3NXd0/QZTeE16soiB6gV9K8hmbG+NjFJngIftuLna2hamoXtvSFRkZGUxaXHW/bQ9xi8yGUtwM3UszkfdkNO9buKHy1um5KOQrmCHz8fdfJjNzPIP0DO9l5mY1KLHR92y91fOESV5RQlTJzfGu+qCDzY3xMYpMAFFm0xD9Nn1KWkKGykyrQQlOlKK637YmDhwore16Kc765PXlJAtFxD+2YFGakmlLlK9zZFy0j02mE9XzXmRutKbZxQWZ4mjtiUyW4tAgJr9nLFXSczY3xscoMgFE9d2EoVgVX5cpTaQxSmexsbnJa5rXE6lpdMgQS1cR38hiihJdhMpVeQK7oZJemwzz0WGEZ252rY7ZRB6zNF+Y2dPkJnpuXjmrU593+GGfVRGZy2BmX7yHzY0xYBSZQDJ/LErAJ7977Iqe2sg8NF6vjYykVvX7arFcH7YwQqG7Q1jHp4iqX0ikppHJcA/zxbH57Q4yordmMDcxjh501e8qtC4/Wmc3m9g6G7K5Md9jFBnmZ8genXeQYHz+l2BzY3yMIsM8Q3gxh1iiInto+iDBNO+Ps5CV33Uk+nbnbG4MYRQZ5hl06SrKSP1v2T/Bvjj0oO9yXVm6GucwwcIoMgzDTDQpfAOay5F0XcmEbwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NCheckState DelayBefore="1" DisplayName="Check App State 'Brak danych'" sap:VirtualizedContainerService.HintSize="954,422" sap2010:WorkflowViewState.IdRef="NCheckState_1" Mode="WaitDisappear" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Timeout="1" Version="V3">
+                  <uix:NCheckState.IfExists>
+                    <Sequence DisplayName="Target disappears" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </uix:NCheckState.IfExists>
+                  <uix:NCheckState.IfNotExists>
+                    <Sequence DisplayName="Target does not disappear" sap:VirtualizedContainerService.HintSize="450,205" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Throw Exception="[New BusinessRuleException(&quot;Brak danych&quot;)]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                    </Sequence>
+                  </uix:NCheckState.IfNotExists>
+                  <uix:NCheckState.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/" CvTextArea="734, 920, 69, 15" CvTextArgument="Brak danych" CvType="Text" DesignTimeRectangle="219, 912, 1100, 29" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'Brak danych'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='dataset-empty' aaname='Brak danych' check:innerText='Brak danych' /&gt;" Guid="22626579-9fa5-4288-a4ec-48665f691471" InformativeScreenshot="e0bb198064d1f4037ea4e25719345445.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                  </uix:NCheckState.Target>
+                </uix:NCheckState>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click '0000142065'" sap:VirtualizedContainerService.HintSize="954,193" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/" CvTextArea="232, 883, 70, 12" CvType="Text" DesignTimeRectangle="233, 881, 68, 16" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'0000142065'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='link' aaname='*' check:innerText='*' /&gt;" Guid="25737ee6-14e7-4576-b820-282899c82ee8" InformativeScreenshot="0c63f3f40c27231fedacc8bfbda5a31d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="233, 836, 80, 12" CvTextArgument="11 Numer KRS" CvType="Text" DesignTimeRectangle="219, 810, 183, 65" FriendlyName="'Numer KRS'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TH' class='p-sortable-column ng-star-inserted' aaname=' Numer KRS ' check:innerText='Numer KRS' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALsAAABFCAYAAAASCJcDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARxSURBVHhe7Zi/a+NIFMfvH9BfodKwxcIW7uIylQ1XnGHBsEVIdXgbk2IxVwSxRdAV5yqYLYIFB0kR8EHAKQJKsSjFggMBG7ZQkUIQULGF6u+90Q9HljkuWRyfb9934FOMRiM/2595ejM/gY1NSaPsbGraQvYkSQj5oaHsRA2UnaiBshM1UHaiBspO1EDZiRooO1EDZSdqoOxEDZSdqIGyEzVQdqIGyk7UQNmJGig7UQNlJ2qg7EQNlJ2ogbITNVB2ogbKTtRA2YkaKDtRA2UnaqDsRA2UnaiBshM1rFX26MsU0dK1CNMvUalfJYT31oJld3D6tXzdh2NZcK7L1/5rsljbo3BxLb520JDYvbnpZzFbOfabXewf+Y+/x70Pt/Mathm3X2N3z4Uf5WNkI6xN9uiij4b8kY33Y8yK6189tN96CEv3LZPLbuQ4mCBeXP8fyD730LEbEmOcj2cx9/+KEEURZpcOWtLfPzOLPZtrvxsiCGV8HuD0U+l3IhthPbLfDtB576L/SxvusYP+eZ7Nnyh7/3goYtRXxNla2R8kvh0bndGsNF6NOV/Ih/5iLBO/GCebZo1ljPlz2/DK5chTZb+K4R/WYTWHebZbFsc/LKTJ+uGoLW8DB77pm8+w+hie9dB6Zd4SNbQOJwjOS/2Dxywa33roNWt5qdGBc5ELa55jO5jcyMJ9Y8P6dVwpyXLZT3x47+zKm8iwHHN8ZzK/ja5k+iSJMfkgz3wlyeAyrMwjm2IrZM+y5QQ9uygTniu7lE8ieCjlQyjlVF36dSO46V+78taw4XyWe6Mxuqb0uMwybHw3lLktDO+K59ioNfvwbmYI74u3TEEWqy0Cr5Zdhizmoma3rAa6o+njPd9CTI7aqJm5ssjcK2b5TbM9sks//LMjMnUxls3c82TfzYRd9MvlROlZsqF8lPGRdCydV4d7U8yrksVqFlF448r+xEbvorwgss9Ja/ZwLAu3Op4Ti/QfW7JRzRdZdZy8GFsle5LMMGyKUL85aZZ/uuylz/1X2XuYxMVYiepzVliONfi9Aaveh/9QjC8v0DTGHRfBYn6Z7F7W8JvlxWSfftqHOxqI7AN4R/sY3lbvN1Rll9Lis5NmTbske/BRSoemC9+cZIQBBjLnu2S/N2WMlDwfpMR5iBGbU5PrIFuMz5Q9SQK4O2Zh+nmpsix7Eku/bqF1bPYEU5z+cYpgbk5qQkzPzMkVM/umebnM/jDFUDZylojbOSmfWpRZlT3dzB1kdfFCnLmUBaVN5eDExe73yC79dIP6c37eLZvXxp6XbV6fLbuQljP1dIO9IrsQnXfzsmwGb6+R1uvmO9R2JBGwZt84a5Q9wezKXz47FuHHl/8kOiGbZa2yE7LNUHaiBspO1EDZiRooO1EDZSdqoOxEDZSdqIGyEzVQdqIGyk7UQNmJGig7UQNlJ2qg7EQNlJ2ogbITNVB2ogbKTtRA2YkaKDtRA2UnaqDsRA2UnaiBshM1UHaiBspO1LCQnY3tR2+UnU1JA/4G/nhshQSqP3wAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="Label 'Dane szczegółowe'" Mode="Appears" Retry="True" Timeout="2">
+                      <uix:VerifyExecutionOptions.Target>
+                        <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=r%2FGVpFgakPrjzNg0Hvplug%3D%3D;typ=P" CvTextArea="203, 276, 262, 34" CvTextArgument="Dane szczegolowe" CvType="Text" DesignTimeRectangle="203, 280, 1512, 22" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'Dane szczegółowe'" FullSelectorArgument="&lt;webctrl tag='H1' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H1' type='' class='' aaname='Dane szczegółowe' check:innerText='Dane szczegółowe' /&gt;" Guid="02553eae-e2ed-4047-869a-739821653787" InformativeScreenshot="817727cae33197c467de42d23dfe9adb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                              <uix:Target CvTextArea="203, 276, 262, 34" CvTextArgument="Dane szczegolowe" CvType="Text" DesignTimeRectangle="203, 277, 262, 33" ElementType="Text" FriendlyName="'Dane szczegolowe'" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:VerifyExecutionOptions.Target>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <uix:NGetText DisplayName="Get Text 'Nazwa'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" TextString="[KRS_Nazwa]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=r%2FGVpFgakPrjzNg0Hvplug%3D%3D;typ=P" CvTextArea="502, 410, 168, 14" CvType="AnyWordGroup" DesignTimeRectangle="494, 402, 823, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'BETACOM SPÓŁKA AKCYJNA'" FullSelectorArgument="&lt;webctrl aaname='BETACOM SPÓŁKA AKCYJNA' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' type='' class='p-col-7 p-md-9 border ng-star-inserted' /&gt;" Guid="28d66447-ddce-47c3-987a-0d274e46fd8a" InformativeScreenshot="1119a9a0a2aaded0343e71f01c5a9f14.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="227, 410, 41, 12" CvTextArgument="Nazwa" CvType="Text" DesignTimeRectangle="220, 402, 274, 31" ElementType="Text" FriendlyName="'Nazwa'" FullSelectorArgument="&lt;webctrl aaname='Nazwa' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Nazwa' tag='DIV' type='' class='p-col-5 p-md-3 title--bg-color border ng-star-inserted' check:innerText='Nazwa' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARYAAAAjCAYAAABRjSXlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHBSURBVHhe7dlRbqpAFIDhuyd2ZXdiuhK7EMMuTFiDz3MZYGDA2lY9NzS5H8mXCpXj0/wZ9E9yOByO4GMIy/V6BQgjLEA4YQFC5UNYgFDCAoQTFiCcsADhhAUIJyxAOGEBwgkLEO7hsLTvTWoOp9Rtrncfb+nto1tdA/5PT4SlD8ihuYmIsADFU2E5Xdp0bPLf5fo2LMPOplkcz8v76uvj/7p0OtTz8nn/v/d2nnc9H+fze7OB3+GJsEwLOS/06pFoG5buUu1e8nubY2rLeXE59bufcUaeO98/XO/nVffMn9u//tFsYDfPh2V6XWLw9aNQ3uFsF//mWrUjGWe11S7mdoe0+Gw2sKeXwlIv+Jsdy80jz3rxr+dkJRDLY9E8s9rZ/GQ2sK8Xw9KbHonaKizDwl/9cnR/d7KYgnKuIjIF5aHZwO5eD8t0bfhOpF78VTjGHUZZ/PdDkN9Xzymxyb9Clc/8ejbwG4SEZYxF/RP0eF4eVcbvS8bFn+9fP8ZU84YvYtfzb8Nxf3a5B9jXw2EB+I6wAOGEBQgnLEA4YQHCCQsQTliAcMIChBMWIJywAOGEBQgnLMA/ISxAOGEBQqWU0l/xPFLJtpD//wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <uix:NGetText DisplayName="Get Text 'NIP'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" TextString="[KRS_NIP]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=r%2FGVpFgakPrjzNg0Hvplug%3D%3D;typ=P" CvElementArea="495, 496, 825, 29" CvType="InputBox" DesignTimeRectangle="494, 494, 823, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'5271022097'" FullSelectorArgument="&lt;webctrl aaname='5271022097' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' type='' class='p-col-7 p-md-9 border ng-star-inserted' /&gt;" Guid="1a9a7949-110f-45f8-af2f-f78fa598d04b" InformativeScreenshot="309731b87883bdd04752d9edec21465e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="227, 503, 22, 12" CvTextArgument="NIP" CvType="Text" DesignTimeRectangle="220, 494, 274, 31" ElementType="Text" FriendlyName="'NIP'" FullSelectorArgument="&lt;webctrl aaname='NIP' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='NIP' tag='DIV' type='' class='p-col-5 p-md-3 title--bg-color border ng-star-inserted' check:innerText='NIP' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARYAAAAjCAYAAABRjSXlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEwSURBVHhe7djNiYNQFIDR6cmutBNJJaaQYBeCNbi+o+RlIm6CemdjzoMD/j2XH15/Yl7TNAGkWJawAOmEBUgnLECqZQkLkEpYgHTCAqQTFiCdsADphAVIJyxAOmEB0gkLkG53WPpbFVXdxbi5Pt6baO5jOR+jq5vohnL/0UZVzftW2sd7L3AtB8IyB6SuVhF5+hiWW//37DR00VSr+8ClHApLN/TRbsKwKyyz5ctnGyfgGg6EpYwxSyxWI5GwAC/Hw1KOX3HYFZbl3CgEl3UqLNP0Hon2/bxtoy/vA67nZFhmZSTqd45CwHWdD0u51swhERZgkRKW50i0/hkrLPDNdocF4BNhAdIJC5BOWIB0wgKkExYgnbAA6YQFSCcsQDphAdIJC/AvhAVIJyxAqoiIX7nbnXCfq8X7AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <uix:NGetText DisplayName="Get Text 'REGON'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" TextString="[KRS_REGON]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=r%2FGVpFgakPrjzNg0Hvplug%3D%3D;typ=P" CvElementArea="492, 527, 827, 29" CvType="InputBox" DesignTimeRectangle="494, 525, 823, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'01096392000000'" FullSelectorArgument="&lt;webctrl aaname='01096392000000' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' type='' class='p-col-7 p-md-9 border ng-star-inserted' /&gt;" Guid="430111a7-dd06-4fe3-a07b-e42d42a2d7b7" InformativeScreenshot="f70136183139f988916fe307d98a146f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="227, 533, 45, 12" CvTextArgument="REGON" CvType="Text" DesignTimeRectangle="220, 525, 274, 31" ElementType="Text" FriendlyName="'REGON'" FullSelectorArgument="&lt;webctrl aaname='REGON' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='REGON' tag='DIV' type='' class='p-col-5 p-md-3 title--bg-color border ng-star-inserted' check:innerText='REGON' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARYAAAAjCAYAAABRjSXlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHKSURBVHhe7dlRjqowGIDRuyd3JTsxsxJnIcZdTMIafO5ti44U0DvKf4eXQ3ISUmrxhS8V/6R8XC4XgBDlEBYgnLAA4YQFCFUOYQFCCQsQTliAcMIChBMWIJywAOGEBQgnLEC4l8Ny/til3W6sS8evZ9d3qfvsR2v06bifzzmc7msszvk4j65np0Meb+9dfR1Ttz+mfjwG/Kq3wtJEoD7gh3R+dH2sPPQ5Em1oyng/CsE5HRbm1GCNg5Hv2+27dqwQFtjc+rDUENx3Do/DMuxCZlGZ6D9zLKa7k2r4/PfaJSx5rXK/Zk1hgc2tD8tPdyx1t3Kft2wSj4kmOuW+9bwNm7DA9t4KS/PuY/IQz67fHvqFsIznDruOd8JyPb99D2GBzb0VlvHPkaWwvLpjKcFYFZas3LeuISywuXVhWQjBw7A8icY9LJN4NCafn4Tl+yfRSVhgayvDkpUH/Kf/CtW58+vjsLzyr9AsQGVsn9cSFtjU+rBcx24PeT2/vjdp35/c5g/heD5n2J00c5YisrCzmQUI+HUvhwXgX4QFCCcsQDhhAcIJCxBOWIBwwgKEExYgnLAA4YQFCCcsQDhhAf4LYQHCCQsQKqWU/gKewgw9fE6BTwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <uix:NGetText DisplayName="Get Text 'Forma prawna'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" TextString="[KRS_Forma]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=r%2FGVpFgakPrjzNg0Hvplug%3D%3D;typ=P" CvTextArea="501, 562, 106, 16" CvType="AnyWordGroup" DesignTimeRectangle="494, 556, 823, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'SPÓŁKA AKCYJNA'" FullSelectorArgument="&lt;webctrl aaname='SPÓŁKA AKCYJNA' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' type='' class='p-col-7 p-md-9 border ng-star-inserted' /&gt;" Guid="1a0b0ddc-5f29-402f-9201-419df7486121" InformativeScreenshot="8c092277d5beb54a7d71acdc6007a179.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="227, 564, 88, 15" CvTextArgument="Forma prawna" CvType="Text" DesignTimeRectangle="220, 556, 274, 31" ElementType="Text" FriendlyName="'Forma prawna'" FullSelectorArgument="&lt;webctrl aaname='Forma prawna' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Forma prawna' tag='DIV' type='' class='p-col-5 p-md-3 title--bg-color border ng-star-inserted' check:innerText='Forma prawna' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARYAAAAjCAYAAABRjSXlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKJSURBVHhe7dhhbqMwEIbhvVNuVW4S5STJQSJuUYkz5LfXM7ZhbBxo09mtSl+kRwIMHlNpvlj9E+LxeDwAwIUcBAsAdwQLAHcECwBXchAsAFwRLADcESwA3BEsANwRLADcESwA3BEsANwRLADcfTpYxsspnE614TZ1nwXwO70ULOd7fwwAhG+wvF/DYHczl3EZu591Z1N2PGmXM4bz2zWMt2F5J15P1TxDuL6XGvH5+b44h7HMX5nC9S2OxZr9Z1PdqYzLebw/2XVE805Mnmu+pV6X1JPrXl373EYN4EAcgyU1/TImTdY056qR0jvLvfSODQFtxNz4Mj6ZJtWQsg0/y/OYsXqeHFDzdRaDYb7WcMuhoOfLmqTuEINkXreM61x7deXZJzXKPeAAXgoW+4s7/yJLcKwatTTck3Ft8LqxtGlt+Ng5WjLn02BpG9bWWtdds3PYc3k370pybQ0PPU/BUgVvE0q13jqBn++lYOntWJbmMvdtU3VDIDepubcdLKlxq2D7cLDYpl/XVbJGO7cJH/k+Xdf8Hcscy9+kU7cNlo0awFG4BYs2zN6O5UvBkoKhGuvOKWyIFFKrNHEnWLTh7b0mJHIt+/3p3M61Eyx7NYCD8AsWbVY71gSBU7C0828Fix1b/4+lrqvrs8GoIWCbXt6Juxb552z1jtwr73WCog2WzRrAMTgGi0jhMm/zbdNLE30pWOK5NmKZPzbkPY49DZY4frPP2zqdYClhVJ6P844X2/R53AZD/t5lvTvBslsDOIZPB8vP0GlwAP8NwQLAHcECwN1BgwXAdyJYALgjWAC4I1gAuCNYALgjWAC4I1gAuCNYALgjWAD8EwQLAHcaLBwcHBx+Rwh/AcSCfbosInATAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <uix:NGetText DisplayName="Get Text 'Data wpisu'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="7627a8c7-975d-4f2a-ab1a-6333c1ec40e9" TextString="[KRS_Data]" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://wyszukiwarka-krs.ms.gov.pl/dane-szczegolowe-podmiotu;numerKRS=r%2FGVpFgakPrjzNg0Hvplug%3D%3D;typ=P" CvElementArea="489, 683, 828, 31" CvType="InputBox" DesignTimeRectangle="494, 684, 823, 31" DesignTimeScaleFactor="0.8999999761581421" ElementType="Text" FriendlyName="'11.12.2002'" FullSelectorArgument="&lt;webctrl aaname='11.12.2002' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='DIV' type='' class='p-col-7 p-md-9 border ng-star-inserted' /&gt;" Guid="7d914b1d-927e-46ce-9a25-13d109fca342" InformativeScreenshot="492e7fb694213183b8bfd7421050432b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Wyszukiwarka KRS' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="227, 691, 242, 16" CvTextArgument="Data wpisu do Rejestru Przedsiebiorcow" CvType="Text" DesignTimeRectangle="220, 684, 274, 31" ElementType="Text" FriendlyName="'Data wpisu'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;ds-layout&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;ds-layout-content&amp;gt;app-dane-szczegolowe&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;ds-panel&amp;gt;p-panel&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='13' isleaf='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='p-col-5 p-md-3 title--bg-color border ng-star-inserted' isleaf='1' tag='DIV' aaname='Data wpisu do Rejestru Przedsiębiorców' check:innerText='Data wpisu do Rejestru Przedsiębiorców' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+                <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="954,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://prs.ms.gov.pl/" Version="V3" />
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="-8, -8, 1936, 1048" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEgAACxIB0t1+/AAAAWtJREFUWEftkzFLw0AUx/sR/Aj9CAW/QD+Agmu3Tp0LTp1adC3oJHSKk7gJcS100qmQOVNAiYuBQEB0O/O79qWXy9AEDHG4Pzzy3r3Lvd+7l/RUx3IADsABOID/A5B8KRV+HizO9omWVQBQcBsfLEp369FHojbbsGSm7Fya5Z0Y4n3Pf1VPm0D7to4CLFa+6p1OSjYYXelCUZxUcv3zmQrC99K7J8OpNvx7/0XnRLUBhP7mYa3j2/wpAOxB7CG+uLzTMUWBRQD3z2baTDUGCMI3HU+XjxUARNHhZKn9wehax3bXpmoDUBCfw4m9/FABoMvx3CvlENB0zBqjMUFFtQHk+ijCGJAAyDo+ILb4OMcLT+dlPKLGIzBljwAIrpx5MyrAzK4ZCWum/hSATs1YvgHGh5FrfAP8w3Rm/98IAHLsEXHVUgRoCrMHm6+eK+ccBWhbBUD2s4MQS7/3iZZVAHQlB+AAHIAD6BhAqV9mkxTP4nP+QQAAAABJRU5ErkJggg==" InformativeScreenshot="ad391443b929790868d19ac0250a8a64.jpg" Selector="&lt;html app='chrome.exe' title='Portal Rejestrów Sądowych' /&gt;" Title="Portal Rejestrów Sądowych" Url="https://prs.ms.gov.pl/" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1054,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw Exception="[exception]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_3" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
